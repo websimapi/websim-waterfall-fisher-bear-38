@@ -1,5 +1,3 @@
-
-```javascript
 import { createFish } from './fish.js';
 import { scene } from '../scene.js';
 import { FISH } from '../unlocks.js';

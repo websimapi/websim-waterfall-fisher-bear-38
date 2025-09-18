@@ -1,15 +1,13 @@
-
-```javascript
 import * as THREE from 'three';
 import { scene } from '../scene.js';
 import { createBear } from '../entities/bear.js';
 import { createFish } from '../entities/fish.js';
 import { bindUI, updateUIValues, showGameOver, showHUD, showStart, populateUnlocks } from './ui.js';
-import { BEARS, FISH, getPlayerProgress, savePlayerProgress } from '../unlocks.js';
+import { BEARS, FISH, getPlayerProgress as getPlayerProgressFromStorage, savePlayerProgress } from '../unlocks.js';
 import { playSFX, sounds } from './audio.js';
 import { clearActiveFishes } from '../entities/fishSpawner.js';
 
-let playerProgress = getPlayerProgress();
+let playerProgress = getPlayerProgressFromStorage();
 let gameState = { current: 'IDLE', score: 0, streak: 1, idleAnimTimer: 0 };
 let bear = null;
 let showcaseBear = null;
@@ -58,7 +56,8 @@ function setupStartScreen() {
         if (type === 'bear') playerProgress.selectedBear = id;
         if (type === 'fish') playerProgress.selectedFish = id;
         savePlayerProgress(playerProgress);
-
+        populateUnlocks(playerProgress, () => {}); // Re-populate to update selection visuals
+        
         const quickBearName = document.querySelector('#choose-bear span');
         const quickBearImg = document.querySelector('#choose-bear img');
         const quickFishName = document.querySelector('#choose-fish span');
@@ -127,7 +126,7 @@ function gameOver() {
 
     setTimeout(() => {
         const goScreen = document.getElementById('game-over-screen');
-        if (goScreen) {
+        if (goScreen && !goScreen.classList.contains('hidden')) {
             goScreen.classList.add('fade-out');
             const onFadeOut = () => {
                 goScreen.removeEventListener('animationend', onFadeOut);

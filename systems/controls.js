@@ -1,5 +1,3 @@
-
-```javascript
 import * as THREE from 'three';
 import { scene, camera, getOrbitControls } from '../scene.js';
 import { BEAR_X_LIMIT } from '../entities/bear.js';

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Waterfall Fisher Bear</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+</head>
+<body>
+    <div id="game-container"></div>
+    <div id="ui-container">
+        <button id="dev-console-button" class="hidden">Dev</button>
+        <div id="score-container" class="hidden">
+            <div class="score-label">SCORE</div>
+            <div id="score">0</div>
+        </div>
+        <div id="streak-container" class="hidden">
+            <div class="streak-label">STREAK</div>
+            <div id="streak">x1</div>
+        </div>
+        <div id="game-over-screen" class="hidden">
+            <h1>GAME OVER</h1>
+            <p>Final Score: <span id="final-score">0</span></p>
+        </div>
+        <div id="start-screen">
+            <img id="game-logo" src="splashy_bear_logo.png" alt="Splashy Bear Logo">
+            <div id="start-screen-content">
+                <div id="quick-choices">
+                    <div id="choose-bear" class="unlock-box">
+                        <img src="bear_unlock.png" alt="Choose Bear">
+                        <span>Splashy Bear</span>
+                    </div>
+                    <div id="choose-fish" class="unlock-box">
+                        <img src="fish_unlock.png" alt="Choose Fish">
+                        <span>Classic Fish</span>
+                    </div>
+                </div>
+                <div id="unlocks-container" class="hidden">
+                    <div class="selection-header">
+                        <button id="selection-back">Back</button>
+                        <h2 id="selection-title">Select</h2>
+                    </div>
+                    <div id="bear-category" class="unlock-category">
+                        <h2>Choose Your Bear</h2>
+                        <div id="bear-unlocks" class="unlock-grid">
+                            <!-- Bear unlocks will be populated here by JavaScript -->
+                        </div>
+                    </div>
+                    <div id="fish-category" class="unlock-category">
+                        <h2>Choose Your Fish</h2>
+                        <div id="fish-unlocks" class="unlock-grid">
+                            <!-- Fish unlocks will be populated here by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="start-button-container">
+                <button id="start-button">START</button>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="main.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
